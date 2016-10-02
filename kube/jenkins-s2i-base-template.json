@@ -1,0 +1,107 @@
+{
+    "apiVersion": "v1",
+    "kind": "Template",
+    "labels": {},
+    "metadata": {
+        "annotations": {
+            "description": "Template to build the jenkins base"
+        },
+        "labels": { "app": "jenkins-s2i-base" },
+        "name": "jenkins-s2i-base"
+    },
+    "objects": [
+        {
+            "apiVersion": "v1",
+            "kind": "ImageStream",
+            "metadata": {
+                "annotations": {},
+                "labels": {
+                    "app": "jenkins-s2i-base",
+                    "group": "build",
+                    "project": "jenkins-s2i-base",
+                    "version": "1.0.0"
+                },
+                "name": "jenkins-s2i-base"
+            },
+            "spec": {
+                "dockerImageRepository": "${REGISTRY}/${IS_PULL_NAMESPACE}/jenkins-s2i-base",
+                "tags": [
+                    {
+                        "annotations": {
+                            "tags": "${IS_TAG}"
+                        },
+                        "from": {
+                            "kind": "ImageStreamTag",
+                            "name": "jenkins-s2i-base"
+                        },
+                        "name": "${IS_TAG}"
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "BuildConfig",
+            "metadata": {
+                "annotations": {},
+                "labels": {
+                    "app": "jenkins-s2i-base",
+                    "group": "build",
+                    "project": "jenkins-s2i-base",
+                    "version": "1.0.0"
+                },
+                "name": "jenkins-s2i-base"
+            },
+            "spec": {
+                "output": {
+                    "to": {
+                        "kind": "ImageStreamTag",
+                        "name": "jenkins-s2i-base:${IS_TAG}"
+                    }
+                },
+                "source": {
+                    "git": {
+                        "uri": "https://github.com/welshstew/jenkins-s2i-base.git"
+                    },
+                    "images": [],
+                    "secrets": [],
+                    "type": "Git"
+                },
+                "strategy": {
+                    "dockerStrategy": {
+                        "env": [],
+                        "from": {
+                            "kind": "ImageStreamTag",
+                            "name": "jenkins:latest",
+                            "namespace": "openshift"
+                        },
+                        "incremental": false
+                    },
+                    "type": "Docker"
+                },
+                "triggers": [
+                    {
+                        "imageChange": {
+                            "from": {
+                                "kind": "ImageStreamTag",
+                                "name": "jenkins:latest",
+                                "namespace": "openshift"
+                            }
+                        },
+                        "type": "ImageChange"
+                    }
+                ]
+            }
+        }
+    ],
+  "parameters" : [ {
+    "name" : "IS_TAG",
+    "value" : "latest"
+  }, {
+    "name" : "REGISTRY",
+    "value" : "172.30.177.239:5000"
+  }, {
+    "name" : "IS_PULL_NAMESPACE",
+    "value" : "build"
+  } ]
+}
