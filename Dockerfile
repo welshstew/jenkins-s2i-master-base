@@ -10,16 +10,15 @@ RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
     rpm -Uvh epel-release-latest-7*.rpm && \
     rm epel-release-latest-7*.rpm
 
+#install jq, git, and maven3
+RUN yum -y install java-1.8.0-openjdk jq git maven && \
+    yum -y clean all
+
 #download and install groovy
 RUN wget http://dl.bintray.com/groovy/maven/groovy-binary-${GROOVY_VERSION}.zip && \
     unzip groovy-binary-${GROOVY_VERSION}.zip && \
     mv groovy-${GROOVY_VERSION} /opt/groovy && \
-    rm groovy-binary-${GROOVY_VERSION}.zip && \
-    ln -s /usr/bin/groovy /opt/groovy/bin/groovy
-
-#install jq, git, and maven3
-RUN yum -y install java-1.8.0-openjdk jq git maven && \
-    yum -y clean all
+    rm groovy-binary-${GROOVY_VERSION}.zip 
 
 #uid from the jenkins image
 USER 1001
