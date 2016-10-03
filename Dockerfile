@@ -5,8 +5,7 @@ USER root
 ENV MAVEN_VERSION 3.3.9
 ENV GROOVY_VERSION 2.4.0
 ENV JAVA_HOME /usr/lib/jvm/jre-1.8.0-openjdk
-ENV GROOVY_HOME /opt/groovy
-ENV PATH $GROOVY_HOME/bin:$PATH
+ENV PATH /opt/apache-maven-${MAVEN_VERSION}/bin:/opt/groovy/bin:$PATH
 
 #RUN yum -y install wget
 
@@ -28,7 +27,7 @@ ENV PATH $GROOVY_HOME/bin:$PATH
 #install maven
 RUN curl -O http://mirror.catn.com/pub/apache/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz && \
     tar xf apache-maven-${MAVEN_VERSION}-bin.tar.gz && \
-    mv apache-maven-${MAVEN_VERSION}-bin /opt/maven && \
+    mv apache-maven-${MAVEN_VERSION} /opt && \
     rm apache-maven-${MAVEN_VERSION}-bin.tar.gz
 
 #download and install groovy
