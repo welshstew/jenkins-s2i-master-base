@@ -33,7 +33,7 @@ RUN curl -O http://mirror.catn.com/pub/apache/maven/maven-3/${MAVEN_VERSION}/bin
 #download and install groovy
 # NOTE: having to point this at my local nexus because the bintray has a ':' in it :-/
 #http://10.1.2.4:8081/nexus/service/local/repositories/thirdparty/content/org/groovy/groovy-binary/2.4.3/groovy-binary-2.4.3.zip
-RUN curl -O groovy-binary-${GROOVY_VERSION}.zip http://10.1.2.4:8081/nexus/service/local/repositories/thirdparty/content/org/groovy/groovy-binary/${GROOVY_VERSION}/groovy-binary-${GROOVY_VERSION}.zip && \
+RUN curl -O http://10.1.2.4:8081/nexus/service/local/repositories/thirdparty/content/org/groovy/groovy-binary/${GROOVY_VERSION}/groovy-binary-${GROOVY_VERSION}.zip && \
     unzip groovy-binary-${GROOVY_VERSION}.zip && \
     mv groovy-${GROOVY_VERSION} /opt/groovy && \
     rm groovy-binary-${GROOVY_VERSION}.zip 
