@@ -4,7 +4,7 @@ USER root
 
 ENV MAVEN_VERSION 3.3.9
 ENV GROOVY_VERSION 2.4.3
-ENV JAVA_HOME /usr/lib/jvm/jre-1.8.0-openjdk
+ENV JAVA_HOME /usr/lib/jvm/java-1.8.0
 ENV PATH /opt/apache-maven-${MAVEN_VERSION}/bin:/opt/groovy/bin:$PATH
 
 #RUN yum -y install wget
@@ -23,6 +23,9 @@ ENV PATH /opt/apache-maven-${MAVEN_VERSION}/bin:/opt/groovy/bin:$PATH
 #install jq, git
 # RUN yum -y install jq git apache-maven && \
 #     yum -y clean all
+
+RUN yum -y java-1.8.0-openjdk-devel.x86_64 && \
+    yum -y clean all
 
 #install maven
 RUN curl -O http://mirror.catn.com/pub/apache/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz && \
