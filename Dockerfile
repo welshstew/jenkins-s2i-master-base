@@ -24,7 +24,7 @@ ENV PATH /opt/apache-maven-${MAVEN_VERSION}/bin:/opt/groovy/bin:$PATH
 # RUN yum -y install jq git apache-maven && \
 #     yum -y clean all
 
-RUN yum -y java-1.8.0-openjdk-devel.x86_64 && \
+RUN yum -y java-1.8.0-openjdk-devel && \
     yum -y clean all
 
 #install maven
