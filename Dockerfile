@@ -9,7 +9,7 @@ ENV GROOVY_HOME /opt/groovy
 RUN yum -y install wget unzip
 
 #grab the maven repo
-#RUN wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
+RUN wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
 
 #grab the epel latest rpm so we can get jq - may be useful later
 RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \ 
