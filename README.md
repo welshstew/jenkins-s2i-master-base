@@ -7,7 +7,7 @@ OSE jenkins image with a groovy on top
 oc new-project ci
 oc create -f kube/jenkins-s2i-master-base-template.json
 REGISTRY=`oc get svc/docker-registry -n default -o json | jq -r .spec.portalIP`
-oc new-app --template=jenkins-s2i-master-base -p REGISTRY=$REGISTRY IS_PULL_NAMESPACE=ci
+oc new-app --template=jenkins-s2i-master-base -p REGISTRY=$REGISTRY,IS_PULL_NAMESPACE=ci
 
 
 ```

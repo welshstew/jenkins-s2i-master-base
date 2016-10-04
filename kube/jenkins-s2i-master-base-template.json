@@ -24,7 +24,7 @@
                 "name": "jenkins-s2i-master-base"
             },
             "spec": {
-                "dockerImageRepository": "${REGISTRY}/${IS_PULL_NAMESPACE}/jenkins-s2i-master-base",
+                "dockerImageRepository": "${REGISTRY}:5000/${IS_PULL_NAMESPACE}/jenkins-s2i-master-base",
                 "tags": [
                     {
                         "annotations": {
@@ -99,7 +99,7 @@
     "value" : "latest"
   }, {
     "name" : "REGISTRY",
-    "value" : "172.30.177.239:5000"
+    "value" : "172.30.177.239"
   }, {
     "name" : "IS_PULL_NAMESPACE",
     "value" : "ci"
