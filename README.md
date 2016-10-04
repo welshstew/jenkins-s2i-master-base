@@ -1,14 +1,13 @@
-# jenkins-s2i-base
-OSE jenkins image with a couple of extra yummy layers on top
-
+# jenkins-s2i-master-base
+OSE jenkins image with a groovy on top
 
 ## Building / Deploying
 
 ```
-
-oc create -f kube/jenkins-s2i-base-template.json
+oc new-project ci
+oc create -f kube/jenkins-s2i-master-base-template.json
 REGISTRY=`oc get svc/docker-registry -n default -o json | jq -r .spec.portalIP`
-oc new-app --template=jenkins-s2i-base -p REGISTRY=$REGISTRY
+oc new-app --template=jenkins-s2i-master-base -p REGISTRY=$REGISTRY IS_PULL_NAMESPACE=ci
 
 
 ```
