@@ -8,7 +8,7 @@ ENV PATH /opt/groovy/bin:$PATH
 RUN curl -O https://dl.bintray.com/groovy/maven/apache-groovy-binary-${GROOVY_VERSION}.zip && \
     unzip apache-groovy-binary-${GROOVY_VERSION}.zip && \
     mv apache-groovy-${GROOVY_VERSION} /opt/groovy && \
-    rm apache-groovy-binary-${GROOVY_VERSION}.zip 
+    rm apache-groovy-binary-${GROOVY_VERSION}.zip
 
 #uid from the jenkins image
 USER 1001
