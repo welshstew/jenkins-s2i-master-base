@@ -6,8 +6,8 @@
         "annotations": {
             "description": "Template to build the jenkins base"
         },
-        "labels": { "app": "jenkins-s2i-base" },
-        "name": "jenkins-s2i-base"
+        "labels": { "app": "jenkins-s2i-master-base" },
+        "name": "jenkins-s2i-master-base"
     },
     "objects": [
         {
@@ -16,15 +16,15 @@
             "metadata": {
                 "annotations": {},
                 "labels": {
-                    "app": "jenkins-s2i-base",
+                    "app": "jenkins-s2i-master-base",
                     "group": "build",
-                    "project": "jenkins-s2i-base",
+                    "project": "jenkins-s2i-master-base",
                     "version": "1.0.0"
                 },
-                "name": "jenkins-s2i-base"
+                "name": "jenkins-s2i-master-base"
             },
             "spec": {
-                "dockerImageRepository": "${REGISTRY}/${IS_PULL_NAMESPACE}/jenkins-s2i-base",
+                "dockerImageRepository": "${REGISTRY}/${IS_PULL_NAMESPACE}/jenkins-s2i-master-base",
                 "tags": [
                     {
                         "annotations": {
@@ -32,7 +32,7 @@
                         },
                         "from": {
                             "kind": "ImageStreamTag",
-                            "name": "jenkins-s2i-base"
+                            "name": "jenkins-s2i-master-base"
                         },
                         "name": "${IS_TAG}"
                     }
@@ -45,23 +45,23 @@
             "metadata": {
                 "annotations": {},
                 "labels": {
-                    "app": "jenkins-s2i-base",
+                    "app": "jenkins-s2i-master-base",
                     "group": "build",
-                    "project": "jenkins-s2i-base",
+                    "project": "jenkins-s2i-master-base",
                     "version": "1.0.0"
                 },
-                "name": "jenkins-s2i-base"
+                "name": "jenkins-s2i-master-base"
             },
             "spec": {
                 "output": {
                     "to": {
                         "kind": "ImageStreamTag",
-                        "name": "jenkins-s2i-base:${IS_TAG}"
+                        "name": "jenkins-s2i-master-base:${IS_TAG}"
                     }
                 },
                 "source": {
                     "git": {
-                        "uri": "https://github.com/welshstew/jenkins-s2i-base.git"
+                        "uri": "https://github.com/welshstew/jenkins-s2i-master-base.git"
                     },
                     "images": [],
                     "secrets": [],
