@@ -102,6 +102,6 @@
     "value" : "172.30.177.239:5000"
   }, {
     "name" : "IS_PULL_NAMESPACE",
-    "value" : "build"
+    "value" : "ci"
   } ]
 }
